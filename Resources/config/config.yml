@@ -1,0 +1,5 @@
+parameters:
+  security.firewall.name: "secured_area"
+  userbundle.from.email: test@test.com
+  userextensionbundle.name: "UserExtensionBundle"
+  userextensionbundle.namespace: "Rothers\\UserExtensionBundle\\Entity\\User"

@@ -1,0 +1,117 @@
+<?php
+
+namespace Rothers\UserBundle\Entity;
+
+use Symfony\Component\Security\Core\Role\RoleInterface;
+use Doctrine\Common\Collections\ArrayCollection;
+use Rothers\UserBundle\Entity\User;
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Rothers\UserBundle\Entity\Role
+ *
+ * @ORM\Table(name="role")
+ * @ORM\Entity(repositoryClass="Rothers\UserBundle\Entity\RoleRepository")
+ */
+class Role implements RoleInterface {
+
+  /**
+   * @var integer $id
+   *
+   * @ORM\Column(name="id", type="integer")
+   * @ORM\Id
+   * @ORM\GeneratedValue(strategy="AUTO")
+   */
+  protected $id;
+
+  /**
+   * @var string $name
+   *
+   * @ORM\Column(name="name", type="string", length=255)
+   */
+  protected $name;
+
+  /**
+   * @var string $role
+   *
+   * @ORM\Column(name="role", type="string", length=255, unique=true)
+   */
+  protected $role;
+
+  /**
+   * @ORM\ManyToMany(targetEntity="User", mappedBy="roles")
+   */
+  protected $users;
+
+  public function __construct() {
+    $this->users = new ArrayCollection();
+  }
+
+  public function __toString() {
+    return $this->name;
+  }
+
+  /**
+   * Get id
+   *
+   * @return integer 
+   */
+  public function getId() {
+    return $this->id;
+  }
+
+  /**
+   * Set name
+   *
+   * @param string $name
+   */
+  public function setName($name) {
+    $this->name = $name;
+  }
+
+  /**
+   * Get name
+   *
+   * @return string 
+   */
+  public function getName() {
+    return $this->name;
+  }
+
+  /**
+   * Set role
+   *
+   * @param string $role
+   */
+  public function setRole($role) {
+    $this->role = $role;
+  }
+
+  /**
+   * Get role
+   *
+   * @return strine 
+   */
+  public function getRole() {
+    return $this->role;
+  }
+
+  /**
+   * Add users
+   *
+   * @param Rothers\UserBundle\Entity\User $users
+   */
+  public function addUser(User $users) {
+    $this->users[] = $users;
+  }
+
+  /**
+   * Get users
+   *
+   * @return Doctrine\Common\Collections\Collection 
+   */
+  public function getUsers() {
+    return $this->users;
+  }
+
+}

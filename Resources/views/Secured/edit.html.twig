@@ -1,0 +1,5 @@
+{% extends 'UserBundle::layout.html.twig' %}
+{% form_theme form "UserBundle:Theme:form.html.twig" %}
+{% block body %}
+  {% include 'UserBundle:Secured:form.html.twig' with {'form':form, 'form_route':path('edit_user',{'id':user.id})} %}
+{% endblock %}
