@@ -11,7 +11,7 @@ use Rothers\UserBundle\Entity\User;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
 /**
- * @Route("/secured/user")
+ * @Route("/admin/user")
  */
 class SecuredController extends Controller {
 
